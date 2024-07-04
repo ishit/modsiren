@@ -1,0 +1,37 @@
+exp_name: localrelu
+train_filenames: train_filenames.txt
+val_filenames: val_filenames.txt
+
+model:
+    local: True # True, False
+    layers: 4
+    width: 256
+    embedding: False # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: relu # relu, sine
+    modulation_activation: False # relu, false
+    encoder: True
+
+training:
+    epochs: 10000
+    lr: 0.0001
+    batch_size: 64
+
+image:
+    size: 128
+    cells: 8
+    channels: 3
+    
+latent:
+    dim: 64
+    var_factor: 0.001
+
+loss:
+    reg_lam: 0.001
+
+logging:
+    image_step: 100
+    scalars_step: 100
+
+log_dir: logs
+gpu: 0

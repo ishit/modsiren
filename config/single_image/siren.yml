@@ -1,0 +1,43 @@
+exp_name: siren
+im_path: data/castle2.jpg
+
+model:
+    hyper: False
+    local: False # True, False
+    layers: 4
+    width: 256
+    embedding: False # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: sine # relu, sine
+    modulation_activation: False # relu, false
+    freq_scale: 1.
+    concat: False
+    encoder: False # True, False
+    encoder_type: 'simple' # Large, simple
+    decoder: False
+
+training:
+    epochs: 1000
+    lr: 0.0001
+    batch_size: 16
+    mode: 'train'
+
+image:
+    size: 128
+    tile_size: 32
+    cells: 4
+    channels: 3
+    
+latent:
+    dim: 64
+    var_factor: 0.001
+
+loss:
+    reg_lam: 0.1
+
+logging:
+    image_step: 100
+    scalars_step: 500
+
+log_dir: data_logs/
+gpu: 0

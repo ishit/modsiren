@@ -1,0 +1,39 @@
+exp_name: localrelu_64
+im_path: data/castle2.jpg
+
+model:
+    local: True # True, False
+    layers: 4
+    width: 256
+    embedding: False # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: relu # relu, sine
+    modulation_activation: False # relu, false
+    encoder: True
+
+training:
+    epochs: 5000
+    lr: 0.0001
+    batch_size: 16
+
+image:
+    size: 2048
+    cells: 4
+    cell_width: 64
+    channels: 3
+    
+latent:
+    dim: 64
+    var_factor: 1
+
+loss:
+    reg_lam: 0.001
+
+logging:
+    image_step: 1000
+    scalars_step: 100
+
+log_dir: logs
+gpu: 0
+
+

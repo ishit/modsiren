@@ -1,0 +1,34 @@
+exp_name: ae_32_128_32_celeba_encoder3
+train_filenames: '/home/ishit/localImages/img_generalization/img_align_celeba/filenames.txt'
+val_filenames: '/home/ishit/localImages/img_generalization/img_align_celeba/val_filenames.txt'
+root_dir: '/home/ishit/localImages/img_generalization/img_align_celeba/'
+
+model:
+    encoder: True # True, False
+    encoder_type: 'simple' # Large, simple
+    decoder: True # True, False
+
+training:
+    epochs: 10000
+    lr: 0.0001
+    batch_size: 256
+
+image:
+    size: 32
+    channels: 3
+    crop_size: 128
+    
+latent:
+    dim: 128
+    var_factor: 0.001
+
+loss:
+    reg_lam: 0.001
+
+logging:
+    image_step: 1000
+    scalars_step: 100
+    image_vis_count: 10
+
+log_dir: logs_cifar
+gpu: 0

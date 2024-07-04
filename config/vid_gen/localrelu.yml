@@ -1,0 +1,50 @@
+exp_name: localrelu
+train_filenames: '/newfoundland2/ishit/vimeo_dataset/vimeo_septuplet/sep_trainlist.txt'
+val_filenames: '/newfoundland2/ishit/vimeo_dataset/vimeo_septuplet/sep_testlist.txt'
+root_dir: '/newfoundland2/ishit/vimeo_dataset/vimeo_septuplet/sequences/'
+
+model:
+    hyper: False
+    local: True # True, False
+    layers: 4
+    width: 512
+    embedding: False # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: relu # relu, sine
+    modulation_activation: false # relu, false
+    freq_scale: 1.
+    concat: False
+    encoder: True # True, False
+    encoder_type: 'simple' # Large, simple
+    decoder: False
+
+training:
+    epochs: 200
+    lr: 0.0001
+    batch_size: 16 
+    mode: 'train'
+
+video:
+    size: [7, 32, 32]
+    crop_size: 64
+    channels: 3
+    train_size: 30000
+    val_size: 19962
+    test_size: 100000 # Max
+    
+latent:
+    dim: 512    
+
+loss:
+    reg_lam: 0.1
+    hypo_lam: 100
+
+logging:
+    image_step: 1000 
+    scalars_step: 500
+    image_vis_count: 10
+
+log_dir: /newfoundland2/ishit/logs_vid_sep
+gpu: 0
+
+

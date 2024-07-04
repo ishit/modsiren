@@ -1,0 +1,45 @@
+exp_name: modsiren
+root_dir: /newfoundland2/ishit/div2k/DIV2K_train_HR/
+train_filenames: /newfoundland2/ishit/div2k/DIV2K_train_HR/train_filenames.txt
+val_filenames: /newfoundland2/ishit/div2k/DIV2K_train_HR/val_filenames.txt
+
+model:
+    hyper: False
+    local: True # True, False
+    layers: 4
+    width: 256
+    embedding: False # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: sine # relu, sine
+    modulation_activation: relu # relu, false
+    freq_scale: 1.
+    concat: True
+    encoder: True # True, False
+    encoder_type: 'simple' # Large, simple
+    decoder: False
+
+training:
+    epochs: 500
+    lr: 0.0001
+    batch_size: 64 
+    mode: 'train'
+
+image:
+    size: 2048
+    tile_size: 32
+    cells: 64
+    channels: 3
+    
+latent:
+    dim: 256
+    var_factor: 0.001
+
+loss:
+    reg_lam: 0.1
+
+logging:
+    image_step: 10000
+    scalars_step: 500
+
+log_dir: /newfoundland2/ishit/logs_div2k_multi
+gpu: 0

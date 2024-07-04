@@ -1,0 +1,51 @@
+exp_name: modsiren_large_cifar
+train_filenames: '/home/ishit/cifar/train_filenames.txt'
+val_filenames: '/home/ishit/cifar/val_filenames.txt'
+test_filenames: '/home/ishit/cifar/val_filenames.txt'
+root_dir: '/home/ishit/cifar'
+
+model:
+    hyper: False
+    local: True # True, False
+    layers: 4
+    width: 256
+    embedding: False # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: sine # relu, sine
+    modulation_activation: relu # relu, false
+    freq_scale: 1.
+    concat: True
+    encoder: True # True, False
+    encoder_type: 'Large' # Large, simple
+    decoder: False
+
+training:
+    epochs: 400
+    lr: 0.0001
+    batch_size: 64
+    mode: 'test'
+
+image:
+    size: 32
+    channels: 3
+    crop_size: 32
+    train_size: 162770
+    val_size: 19962
+    test_size: 100000 # Max
+    
+latent:
+    dim: 256
+    var_factor: 0.001
+
+loss:
+    reg_lam: 0.1
+    hypo_lam: 100
+
+logging:
+    image_step: 1000
+    scalars_step: 500
+    image_vis_count: 10
+
+log_dir: /newfoundland2/ishit/logs_cifar
+gpu: 0
+

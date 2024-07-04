@@ -1,0 +1,48 @@
+exp_name: modsiren_dragon
+points_path: data/dragon_2_points_2_16.npy
+sdf_path: data/dragon_2_sdf_2_16.npy
+mesh_path: data/dragon_2_gt.ply
+#points_path: data/dragon_new_points.npy
+#sdf_path: data/dragon_new_sdf.npy
+#mesh_path: data/dragon_2_gt.ply
+#points_path: /newfoundland2/ishit/3d_16/Beethoven_points.npy
+#sdf_path: /newfoundland2/ishit/3d_16/Beethoven_sdf.npy
+#mesh_path: /newfoundland2/ishit/noramlized_scans/Beethoven.ply
+
+model:
+    hyper: False
+    local: True # True, False
+    layers: 4 
+    width: 256
+    embedding: False # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: sine # relu, sine
+    modulation_activation: relu # relu, false
+    freq_scale: 1.
+    concat: True
+
+training:
+    epochs: 1000
+    model_lr: 0.0001
+    latent_lr: 0.0001
+    batch_size: 32
+    sample_size: 16384
+    total_points: 500000
+    mode: 'train'
+
+shape:
+    n_voxels: 16
+    clamp: 0.1
+    
+latent:
+    dim: 64
+    var_factor: 0.01
+
+loss:
+    reg_lam: 0.0
+logging:
+    shape_log: 1000
+
+eval_points: 100000
+log_dir: /newfoundland2/ishit/logs_single_shape
+gpu: 0

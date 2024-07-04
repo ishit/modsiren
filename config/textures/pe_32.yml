@@ -1,0 +1,41 @@
+exp_name: pe_concat_32_128_32
+train_filenames: '/home/ishit/textures_dataset/dtd/train_filenames.txt'
+val_filenames: '/home/ishit/textures_dataset/dtd/val_filenames.txt'
+root_dir: '/home/ishit/textures_dataset/dtd/images/'
+
+model:
+    hyper: False
+    local: True # True, False
+    layers: 4
+    width: 256
+    embedding: pe # pe, ffn, False
+    N_freqs: 10
+    synthesis_activation: relu # relu, sine
+    modulation_activation: False # relu, false
+    encoder: True # True, False
+
+training:
+    epochs: 10000
+    lr: 0.0001
+    batch_size: 64
+
+image:
+    size: 32
+    channels: 3
+    crop_size: 32
+    
+latent:
+    dim: 128
+    var_factor: 0.001
+
+loss:
+    reg_lam: 0.001
+
+logging:
+    image_step: 100
+    scalars_step: 100
+    image_vis_count: 10
+
+log_dir: logs
+gpu: 0
+

@@ -1,0 +1,36 @@
+exp_name: ffn_vid
+vid_path: /home/ishit/Documents/bikes_processed/4.npy
+
+model:
+    local: False # True, False
+    layers: 4
+    width: 512
+    embedding: ffn # pe, ffn, False
+    N_freqs: 256
+    freq_scale: 10.
+    synthesis_activation: relu # relu, sine
+    modulation_activation: False # relu, false
+    encoder: False
+
+training:
+    epochs: 10000
+    lr: 0.00001
+    batch_size: 32
+
+video:
+    cell_size: [5, 32, 32]
+    channels: 3
+    
+latent:
+    dim: 256    
+    var_factor: 1
+
+loss:
+    reg_lam: 0.0
+
+logging:
+    image_step: 10000
+    scalars_step: 10000
+
+log_dir: logs
+gpu: 0

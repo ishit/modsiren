@@ -1,0 +1,40 @@
+exp_name: localrelu_car_all
+train_filenames: /newfoundland2/ishit/dualsdf_car/filenames.txt
+root_dir: /newfoundland2/ishit/dualsdf_car/
+
+model:
+    hyper: False
+    local: True # True, False
+    layers: 4
+    width: 256
+    embedding: False # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: relu # relu, sine
+    modulation_activation: false # relu, false
+    freq_scale: 1.
+    concat: False
+
+training:
+    epochs: 1000
+    model_lr: 0.0001
+    latent_lr: 0.0001
+    batch_size: 16
+    sample_size: 16384
+    mode: 'test'
+
+shape:
+    n_voxels: 1
+    clamp: 0.1
+    train_size: 162770
+    val_size: 19962
+    test_size: 100000 # Max
+    
+latent:
+    dim: 256
+    var_factor: 0.0001
+
+loss:
+    reg_lam: 0.01
+
+log_dir: /newfoundland2/ishit/bak_logs_chair_4
+gpu: 0

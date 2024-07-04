@@ -1,0 +1,36 @@
+exp_name: ffn_concat_local
+im_path: data/castle2.jpg
+
+model:
+    local: True # True, False
+    layers: 4
+    width: 360
+    embedding: ffn # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: relu # relu, sine
+    modulation_activation: False # relu, false
+    encoder: False
+
+training:
+    epochs: 5000
+    lr: 0.0001
+    batch_size: 64
+
+image:
+    size: 256
+    cells: 8
+    channels: 3
+    
+latent:
+    dim: 256
+    var_factor: 1
+
+loss:
+    reg_lam: 0.001
+
+logging:
+    image_step: 1000
+    scalars_step: 100
+
+log_dir: logs
+gpu: 0

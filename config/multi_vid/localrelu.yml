@@ -1,0 +1,36 @@
+exp_name: localrelu
+vid_path: /home/ishit/Documents/bikes_processed_2/
+
+model:
+    local: True # True, False
+    layers: 5
+    width: 512
+    embedding: False # pe, ffn, False
+    N_freqs: 0
+    freq_scale: 1.
+    synthesis_activation: relu # relu, sine
+    modulation_activation: false # relu, false
+    encoder: True
+
+training:
+    epochs: 10000
+    lr: 0.0001
+    batch_size: 8
+
+video:
+    cell_size: [5, 32, 32]
+    channels: 3
+    
+latent:
+    dim: 512    
+    var_factor: 1
+
+loss:
+    reg_lam: 0.0
+
+logging:
+    image_step: 1000
+    scalars_step: 1000
+
+log_dir: logs
+gpu: 0

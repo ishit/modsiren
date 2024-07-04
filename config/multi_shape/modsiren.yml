@@ -1,0 +1,46 @@
+exp_name: modsiren
+root_dir: /newfoundland2/ishit/threedscas_points/
+#root_dir: /newfoundland2/ishit/test_points/
+#root_dir: /newfoundland2/ishit/lounge_points/
+#root_dir: /newfoundland2/ishit/all_shapes_processed_local/
+
+model:
+    hyper: False
+    local: True # True, False
+    layers: 5 
+    width: 256
+    embedding: False # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: sine # relu, sine
+    modulation_activation: relu # relu, false
+    freq_scale: 1.
+    encoder: False
+    concat: True
+
+training:
+    epochs: 100000
+    model_lr: 0.0001
+    latent_lr: 0.0001
+    batch_size: 32
+    sample_size: 1024
+    total_points: 500000
+    mode: 'train'
+
+shape:
+    n_voxels: 16
+    clamp: 1
+    n_shapes: 1
+    
+latent:
+    dim: 128
+    var_factor: 0.01
+
+loss:
+    reg_lam: 0.0
+
+logging:
+    shape_log: 2000
+
+eval_points: 100000
+log_dir: /newfoundland2/ishit/logs_multi_shape_2/
+gpu: 0

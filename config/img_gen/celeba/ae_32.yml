@@ -1,0 +1,40 @@
+exp_name: ae_32_celeba
+train_filenames: '/home/ishit/localImages/img_generalization/img_align_celeba/train_filenames.txt'
+val_filenames: '/home/ishit/localImages/img_generalization/img_align_celeba/val_filenames.txt'
+test_filenames: '/home/ishit/localImages/img_generalization/img_align_celeba/test_filenames.txt'
+root_dir: '/home/ishit/localImages/img_generalization/img_align_celeba/'
+
+model:
+    hyper: False
+    encoder: True # True, False
+    encoder_type: 'simple' # Large, simple
+    decoder: True # True, False
+
+training:
+    epochs: 1000
+    lr: 0.0001
+    batch_size: 128
+    mode: 'train'
+
+image:
+    size: 32
+    channels: 3
+    crop_size: 128
+    train_size: 162770
+    val_size: 19962
+    test_size: 100000 # Max
+
+latent:
+    dim: 256
+    var_factor: 0.001
+
+loss:
+    reg_lam: 0.001
+
+logging:
+    image_step: 1000
+    scalars_step: 100
+    image_vis_count: 10
+
+log_dir: /newfoundland2/ishit/logs_celeba
+gpu: 0

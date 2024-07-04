@@ -1,0 +1,45 @@
+exp_name: siren
+#mesh_path: /newfoundland2/ishit/threescas/Beethoven.stl
+
+#root_dir: /newfoundland2/threescas_points/
+points_path: /home/ishit/Documents/shape_datasets/all_shapes_processed_global/Lion_points.npy
+sdf_path: /home/ishit/Documents/shape_datasets/all_shapes_processed_global/Lion_sdf.npy
+mesh_path: /home/ishit/Documents/shape_datasets/all_shapes_processed_global/Lion.ply
+
+model:
+    hyper: False
+    local: False # True, False
+    layers: 4
+    width: 256
+    embedding: false # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: sine # relu, sine
+    modulation_activation: false # relu, false
+    freq_scale: 1.
+    concat: True
+
+training:
+    epochs: 100
+    model_lr: 0.0001
+    latent_lr: 0.0000
+    batch_size: 1
+    sample_size: 16384
+    total_points: 2500000
+    mode: 'train'
+
+shape:
+    n_voxels: 1
+    clamp: 1
+    
+latent:
+    dim: 256
+    var_factor: 0.0
+
+loss:
+    reg_lam: 0.0
+
+eval_points: 100000
+#log_dir: /newfoundland2/ishit/dragon_logs
+log_dir: data_logs
+gpu: 0
+

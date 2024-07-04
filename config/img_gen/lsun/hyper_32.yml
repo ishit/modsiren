@@ -1,0 +1,44 @@
+exp_name: hyper_32_256_32_lsun_encoder3
+train_filenames: '/home/ishit/lsun/data0/train_filenames.txt'
+val_filenames: '/home/ishit/lsun/data0/val_filenames.txt'
+root_dir: '/home/ishit/lsun/data0'
+
+model:
+    hyper: True
+    local: True # True, False
+    layers: 4
+    width: 256
+    embedding: False # pe, ffn, False
+    N_freqs: 256
+    synthesis_activation: sine # relu, sine
+    encoder: True # True, False
+    encoder_type: 'simple' # Large, simple
+    decoder: False
+
+training:
+    epochs: 200
+    lr: 0.0001
+    batch_size: 128
+
+image:
+    size: 32
+    channels: 3
+    crop_size: 256
+    train_size: 293124
+    val_size: 10001
+    
+latent:
+    dim: 256
+    var_factor: 0.001
+
+loss:
+    reg_lam: 0.1
+    hypo_lam: 100
+
+logging:
+    image_step: 1000
+    scalars_step: 500
+    image_vis_count: 10
+
+log_dir: /newfoundland2/ishit/logs_lsun
+gpu: 0
